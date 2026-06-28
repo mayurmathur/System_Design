@@ -4,3 +4,5 @@ Code Execution -> Run in Docker Container for each runtime or lambda's(cold star
 Leaderboard  -> Redis Sorted Set -> Consistency by CDC from DB -> Write to DB first and use CDC yo write in Redis Sorted Set
 
 Async Submissions -> By Queue and workers to ensure we have buffering for competion end spikes. And Response needs to be updated to polling.
+
+Solution in S3 and Key in Queue.
