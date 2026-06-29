@@ -1,0 +1,6 @@
+-> Surges (special events)
+-> Low latency matching(< 1min)
+-> Consistency of matching
+
+
+Proximity Service -> PostGIS (Postgres)
