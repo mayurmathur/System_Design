@@ -3,6 +3,8 @@
 -> Consistency of matching
 
 
+3rd party service(google maps) to figure out distance which can be used to estimate the price.
+
 Proximity Service -> PostGIS (Postgres)
 
 Geo-Spatial Indexes
