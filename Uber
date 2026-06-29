@@ -4,3 +4,22 @@
 
 
 Proximity Service -> PostGIS (Postgres)
+
+Geo-Spatial Indexes
+-> Quad Trees -> Split segments which are greater than k value. -> Great when you have uneven distribution with less frequency of updates
+-> GeoHash() -> Redis 0123 -> 01 02 03 04 11 12 -> great when high frequency of updates
+
+
+Trade offs for high frequency locations updates
+ -> On client side optimization
+    -> less frequency updates based on
+        -> driver offline
+        -> parked somewhere
+        -> proximity to people requesting the ride.
+
+Consistency of Matching
+ -> Redis distributed lock with TTL
+
+
+Surges for special events
+ -> Introduce a queue (ride request queue partitioned on region) ->ride matching service(horizontally scale)
