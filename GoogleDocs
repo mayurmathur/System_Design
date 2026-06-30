@@ -43,6 +43,6 @@ Doc db is append only
 -> Compaction service run after everyone is disconnected from the Doc Service, create a snapshot and store it in Blob storage.
 -> When someone connects give them the snapshots from blob and then keep on appending the updates.
 
-Scale and ensure how everyone lands on same server
+Scale and ensure how everyone lands on same server(Stateful services)
 Zookeeper -> coordination between different users editing the same document, since we have to scale.
 
