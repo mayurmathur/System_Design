@@ -1,0 +1,48 @@
+NFR
+ Durability
+ Low latency updates(<100ms)
+ No more editors than 100
+ Eventual consistency
+
+
+Updates
+WS /docs/{docId}:
+{
+SEND:{
+  messageType: insert|delete
+....
+}
+RECV:{
+ messageType: update
+....
+}
+SEND:{
+ messageType: updateCursor
+.....
+
+}
+
+}
+
+Why sending entire documents are not great idea?
+ -> too much data on each strike
+ -> we would end up overriting each others changes
+
+
+OT -> need a server  
+CRDTS -> Choose a real value number between the two letters between which we are writing, doesnt require central server and great for offline updates
+
+
+Cassandra for OT db -> due to high write frequency
+
+Cursor data in in-memory cache in the Document Server
+
+
+Tradeoffs->
+Doc db is append only
+-> Compaction service run after everyone is disconnected from the Doc Service, create a snapshot and store it in Blob storage.
+-> When someone connects give them the snapshots from blob and then keep on appending the updates.
+
+Scale and ensure how everyone lands on same server
+Zookeeper -> coordination between different users editing the same document, since we have to scale.
+
