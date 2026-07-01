@@ -1,0 +1,24 @@
+Availability >> consistency for video upload
+Upload and streaming of large video
+Low latency streaming(<500ms)
+
+Mutlipart upload/resumable uploads to upload data to S3
+
+S3 notificaitons to confime that video is uploaded successfully and persist this notification videoMetadata
+
+
+
+Low latency streaming:
+-> Serve data using chunks, on s3 chunker will chunks video in 2-10 s small clips, we also store list of chunks by resolution
+-> Transcoding on bit rates
+
+Adaptive bit rates:
+-> On client Side, based on current network bandwidth get lowe or higher chunks.
+-> Store these in CDN's
+
+chunk + transcoding + based on manifest file we need to swithc on the different resolution
+
+
+Streaming Protocol
+ -> HLS
+ -> DASH
