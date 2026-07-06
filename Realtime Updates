@@ -1,0 +1,26 @@
+
+
+Long Polling -> Keeps connection open until we recieve some update and once processed we immediately open the connection.
+(Down side -> in high frequency updates there is a delay of opening new connection)
+
+SSE -> Best option for high frequency data
+to enable set header content-type = "text/event-stream"
+
+WebSockets -> Abstraction over TCP -> For P2P also use this
+Layer 4 load balancer to use because of statefulness 
+
+WebRTC -> Gaming or video conferencing
+
+
+
+Server to datasource hops
+-> Polling (Not preferred)
+-> Consistent Hashing
+   -> Most importantly stateful services follows this 
+   -> To store the mapping -> Zookeeper(Znodes)
+      Scaling transactions -> 
+-> Pub Sub 
+   -> Notification which is not very time sensetive
+   -> Less complex and when its not stateful
+   Ex -> Kafka -> Durable updates
+      -> Redis -> Fire and Forget
