@@ -1,1 +1,44 @@
+-> Add Indexes
+Index lookups are (O(logn)) -> tree structured
+
+-> Vertical Scaling -> move to a bigger machine
+-> Denormalization -> reads becomes less expensive but stale data is an issue.
+-> Scale horizontally(read replicas or sharding) -> after 100k reads 
+   -> Read Replicas -> leader(write comes here) and followers(service reads)
+   -> Sharding -> (when data cannot be stored in one db hence read replicas are not useful) -> More common pattern for write
+       -> Functional Sharding
+       -> Slicing data based on Shard keys
+
+-> Caching
+  -> when you have skewed patterns to read 
+      -> Application level caching -> add redis or memcached so reads, in front of dbs
+      -> CDN's -> cache scaled across world -> best for media -> reduces latency due to closer to user.
+ -> Drawback -> cache invalidation
+
+Solution:->
+index
+still slow?
+if(data is skewed)
+   cache
+else if(even distribution)
+  read replicas
+
+Celebrity Problem:
+Hot key
+ -> Request Coalscing -> for 500k only one db request
+ -> Cache key fanout -> Shard Cache and spread hot keys TS:1 TS:2 ...TS:n
+
+Cache Invalidation
+ -> we have eventual consistency here how do we solve this
+   -> Dont introduce cache
+    -> if u still have a high throughput then we would have to cache
+      -> if new data is written we can invalidate the cache 
+        -> edge case when u have replicas and cache where new data is not written to all the replicas 
+           and user goes and reads from that stale one, in that case we will end up serving with old data
+            -> versioning comes to save here
+               In the same transaction, we need to update the version in the cache and on the master DB.
+               No one will read old data because in cache you will have the current latest version so any older version records in cache will
+               just be skipped.
+   
+
 
