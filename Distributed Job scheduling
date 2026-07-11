@@ -6,3 +6,8 @@ Watcher polls from DB every 5 mins and put in messgae Queeu that is picked up by
   We can use SQS(delivery delayed upto 15mins) -> 
 
    Redis durability by replicas
+
+visible failures handling -> retry with backoff failures
+invisible failures handling -> Have a healthcheck end point(issue with scale in current design so we will skip)
+    job leasing -> remove message from queue and acquire a distributed lock with some ttl(best is to use zookeeper or etcd)
+
