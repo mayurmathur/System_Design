@@ -1,3 +1,6 @@
 
 Watcher polls from DB every 5 mins and put in messgae Queeu that is picked up by workers
  what happens if someone comes and add something in between.
+  We cant use Kafka
+  Need Redis sorted set (in memory) because log based queues cannot handle adding things in between.
+  We can use SQS(delivery delayed upto 15mins) -> 
