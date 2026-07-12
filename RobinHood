@@ -1,0 +1,5 @@
+
+
+How can the system scale up live price updates?
+  -> SSE 
+  -> Redis Pub Sub
