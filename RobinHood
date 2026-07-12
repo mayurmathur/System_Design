@@ -1,5 +1,13 @@
 
 
 How can the system scale up live price updates?
-  -> SSE 
-  -> Redis Pub Sub
+  -> Polling exchange -> Very bad because we will keep polling exchange for same information and it might not have been updated
+  -> Polling Internal Cache -> Internal cache acts as a proxy -> only drawback is we still poll when price is not updated.
+  -> SSE -> Best approach, only send updates. Challenge is how disconnect and reconnets works
+
+
+Users can manage orders 
+  -> Send it directly to exchange.
+  -> Send orders to order order server which enques them for an order dispatch service.
+  -> Order gateway -> Autoscale 
+  -> Order DB to store orders.
