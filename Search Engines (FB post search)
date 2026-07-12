@@ -7,3 +7,8 @@ Ingestion Service
 Indexes to be moved to coldStorage(S3) -> LRU+LFU -> Use count Min sketch to get the way to evict indexes.
 
 Count Min sketch -> Atmost times approcimation.
+
+
+n-grams search
+-> insert n-grams also into search indexes also.
+-> Optimization by count min sketch
