@@ -1,1 +1,9 @@
 
+
+Ingestion Service
+  like:{keyword} -> List PostId
+  time:{keyword} -> List PostId
+
+Indexes to be moved to coldStorage(S3) -> LRU+LFU -> Use count Min sketch to get the way to evict indexes.
+
+Count Min sketch -> Atmost times approcimation.
