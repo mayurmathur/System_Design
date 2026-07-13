@@ -1,0 +1,12 @@
+
+
+
+credit card data sending ->
+  IFrames -> secure window where data from other domain can be loaded.
+  Also Data should be encrypted by Assymetic encryption(RSA) data.
+
+Same domain policy.
+
+Transactions need to be kept as an audit. -> Pattern is to have CDC and put into Event Stream(Kafka) -> S3/Database
+
+CDC can be single point of failure so we need to have another set
