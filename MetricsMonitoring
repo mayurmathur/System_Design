@@ -1,0 +1,46 @@
+
+Metrics posting
+  ProtoBuffers for quick desearlization
+
+metrics:[
+{
+  name:"cpu_usage",
+  labels = ,
+  value: 0.75,
+  timestamp: 2232343343
+}
+]
+
+
+1) DAemon on the service side to batch high volume
+2) Horizontally scale injestion service
+3) Bottleneck on DB side can be resolved by adding kafka in between
+
+Db -> Timeseries DB(it uses LSM trees similar to Cassandra), it supports rollups and downsizing.
+
+
+Long duration queries ex -> last 90days and so on...
+         generate partial rollups in Timeseries database -> roll up seconds granuality to hourly or daily points.
+         we can use sliding windows as well.
+
+Alert frequency
+    Realtime ALerting(Add flink to read from Kafka)
+    Normal workflow for the normal alert service(have a hot replicas)
+
+Noti Service
+    -> External lock to ensure others are not sending this one
+     else
+    -> Leader election which takes care of notis and in case of failure other node is promoted.
+
+
+Monitor monitoring systems
+  -> Use external softare to ensure it keeps checking this system.
+
+
+Cardinality Explosion
+   -> RequestID as part of injestion can explode the cardinality.
+   -> We need to have Policy DB -> Where we can say list of allowed labels so that everything outside of it is just ignored.
+
+Cardinality Tracker (Redis) ->
+  
+   
