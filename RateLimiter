@@ -1,0 +1,50 @@
+Fixed Window counter
+  -> Boundary Effects is the drawback
+
+Sliding Window Log
+  -> Implemented with a heap, so memory concern
+
+Sliding Window Counter
+  -> Uses two counter previous vs current.
+  -> Just an appoximation is a downside
+
+Token Bucket
+  -> Each client has there own token and they gets added at steady rate
+  -> Size of bucket is how do we handle bursts
+  -> Refill rate is how do we handle steady rate.
+
+
+Token state to be saved in Redis which multiple instances can access
+
+Luis Scripting for concurrency in Redis
+  -> hmget
+
+
+HTTP 429  -> Too many requests
+X-ratelimit-limit 
+X-ratelimit-reamining
+X-ratelimit-reset
+
+
+Deep Dives ->
+Use Redis clusters for sharding the redis -> Need multiple instances because each instance cannot have more than 64 gb.
+
+
+Fail Open vs Fail Close -> by default we should fail close. back up to use a counter based rate limit until the main system comes ups
+
+Redis should have replicas(async replicas) for failure scenarios
+
+Connection pooling for tcp handshake overhead so that we are saving network delays here.
+Georgaphic , we should have Redis cluster as close as to gateway for latency.
+
+
+Support Dynamic rule configurations ->
+    push based configuration by using Zookeeper/ETCD -> 
+    Gateway can store rules in memory and subscribe for updates to zookeiper and zookeeper will just push the rules.
+
+
+
+
+
+
+
