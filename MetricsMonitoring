@@ -54,5 +54,9 @@ Cardinality Explosion
    -> We need to have Policy DB -> Where we can say list of allowed labels so that everything outside of it is just ignored.
 
 Cardinality Tracker (Redis) ->
+
+
+Why clickhouse and not cassandra
+ -> Since right volume is not too much, and we need aggregate queries, if write volume was enormous we can use Cassandra by trading off aggregate queries
   
    
