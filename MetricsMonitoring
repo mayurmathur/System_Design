@@ -6,6 +6,10 @@ Core Entities:
  Dashboard -> Collection of series and metadata/formatting
 
 
+Data Flow  
+ Services -> Ingestion -> Storage <- Query  <-Dashboard
+                                        <- Alert -> Notification
+
 
 Metrics posting
   ProtoBuffers for quick desearlization
