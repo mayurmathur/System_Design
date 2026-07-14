@@ -1,3 +1,11 @@
+Core Entities:
+ Metrics -> CPU
+ Labels -> Region, architecture, Service name
+ Series -> Metrics and labels over time
+ Alert rules  -> If CPU on any server exceds 90% fo 5 mins
+ Dashboard -> Collection of series and metadata/formatting
+
+
 
 Metrics posting
   ProtoBuffers for quick desearlization
@@ -12,7 +20,7 @@ metrics:[
 ]
 
 
-1) DAemon on the service side to batch high volume
+1) Daemon on the service side to batch high volume
 2) Horizontally scale injestion service
 3) Bottleneck on DB side can be resolved by adding kafka in between
 
