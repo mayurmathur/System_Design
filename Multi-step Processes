@@ -1,0 +1,11 @@
+
+SAGA -> choreography
+Put events in Durable log
+
+Temporal ->Coordination
+AWS step functions
+Coral Sequencer
+
+Handling updtes -> By versioning use versions and execute steps based on that version
+Making steps run atleast once -> We attempts atleast once with Idempotency key. you can have statuses started, in progress(if crashed in between we need to check and then only proceed), completed
+Manage history size -> continue as new to ensure we have breaks in between
